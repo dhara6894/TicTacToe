@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="DesignPatternDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_Blank" translatesAutoresizingMaskIntoConstraints="NO" id="DC2-Hy-wLt">
+                        <rect key="frame" x="8" y="8" width="34" height="34"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="DC2-Hy-wLt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Agf-Td-aDb"/>
+                <constraint firstAttribute="bottom" secondItem="DC2-Hy-wLt" secondAttribute="bottom" constant="8" id="BpV-80-Bo2"/>
+                <constraint firstAttribute="trailing" secondItem="DC2-Hy-wLt" secondAttribute="trailing" constant="8" id="C4N-Va-cC1"/>
+                <constraint firstItem="DC2-Hy-wLt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Qrk-MN-Su4"/>
+            </constraints>
+            <connections>
+                <outlet property="IBimgView" destination="DC2-Hy-wLt" id="Rn4-g8-2AR"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="img_Blank" width="128" height="128"/>
+    </resources>
+</document>
