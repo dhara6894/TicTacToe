@@ -16,21 +16,25 @@ class ZeroxCollectionViewController: UIViewController {
     var arrCross = [Int]()
     var arrZero =  [Int]()
     let arrPosibileValue = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-    @IBOutlet weak var zeroXCollectionView: UICollectionView!
+    @IBOutlet weak var zeroXCollectionView: UICollectionView!{
+        didSet{
+            setUpCollectionView()
+        }
+    }
     @IBOutlet weak var IBlblDesision: UILabel!
     @IBOutlet weak var IBlblPlayerOne: UILabel!
     @IBOutlet weak var IBlblPlayerTwo: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        zeroXCollectionView.delegate = self
-        zeroXCollectionView.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = false
-        zeroXCollectionView.allowsMultipleSelection = true
-        zeroXCollectionView.register(UINib(nibName: "CollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "collectionCell")
         IBlblDesision.isHidden = true
         IBlblPlayerOne.text = playerOneName
         IBlblPlayerTwo.text = playerTwoName
+    }
+    private func setUpCollectionView(){
+        zeroXCollectionView.allowsMultipleSelection = true
+        zeroXCollectionView.register(UINib(nibName: "CollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "collectionCell")
     }
 }
 extension ZeroxCollectionViewController:  UICollectionViewDelegateFlowLayout{
