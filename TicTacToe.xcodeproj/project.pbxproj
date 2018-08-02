@@ -17,6 +17,7 @@
 		2918D16D1E6D435B00318EAC /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */; };
 		29A4485D1E6E9AC9003D463F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4485B1E6E9AC9003D463F /* LoginViewController.swift */; };
 		29A4485E1E6E9AC9003D463F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A4485C1E6E9AC9003D463F /* LoginViewController.xib */; };
+		8880988821136D0F00E58392 /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880988721136D0F00E58392 /* BezierPath.swift */; };
 		88F81C5E210E32A200FDA82D /* AllinOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F81C5D210E32A200FDA82D /* AllinOne.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		29A4485B1E6E9AC9003D463F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		29A4485C1E6E9AC9003D463F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		8880988721136D0F00E58392 /* BezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPath.swift; sourceTree = "<group>"; };
 		88F81C5D210E32A200FDA82D /* AllinOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllinOne.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				2918D1531E6D2E4A00318EAC /* Assets.xcassets */,
 				2918D1551E6D2E4A00318EAC /* LaunchScreen.storyboard */,
 				2918D1581E6D2E4A00318EAC /* Info.plist */,
+				8880988721136D0F00E58392 /* BezierPath.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A4485D1E6E9AC9003D463F /* LoginViewController.swift in Sources */,
+				8880988821136D0F00E58392 /* BezierPath.swift in Sources */,
 				2918D16C1E6D435B00318EAC /* CollectionViewCell.swift in Sources */,
 				88F81C5E210E32A200FDA82D /* AllinOne.swift in Sources */,
 				2918D1681E6D431200318EAC /* ZeroxCollectionViewController.swift in Sources */,
