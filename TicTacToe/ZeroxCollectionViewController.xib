@@ -26,7 +26,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iL7-VX-OYW">
                     <rect key="frame" x="16" y="140" width="288" height="288"/>
-                    <color key="backgroundColor" red="1" green="0.2001291486" blue="0.16665724570000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.84313725490000002" green="0.2470588235" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="iL7-VX-OYW" secondAttribute="height" multiplier="1:1" id="1e4-FH-4eJ"/>
                     </constraints>
@@ -53,7 +53,9 @@
                         <constraint firstAttribute="width" constant="91" id="OZF-ze-86g"/>
                         <constraint firstAttribute="height" constant="30" id="lLJ-Fm-nOz"/>
                     </constraints>
-                    <state key="normal" title="Play Again"/>
+                    <state key="normal" title="Play Again">
+                        <color key="titleColor" red="0.84313725490000002" green="0.2470588235" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="btnPlayAgain:" destination="-1" eventType="touchUpInside" id="MoE-hn-Qac"/>
                     </connections>
@@ -61,11 +63,13 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4g-h6-W22">
                     <rect key="frame" x="16" y="71" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.84313725490000002" green="0.2470588235" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWJ-Qn-Z61">
                     <rect key="frame" x="262" y="69" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.84313725490000002" green="0.2470588235" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-gC-DZM">
@@ -83,7 +87,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.96225136518478394" green="0.97723358869552612" blue="0.013476225547492504" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="iL7-VX-OYW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="3Ku-Du-2s1"/>
                 <constraint firstItem="iL7-VX-OYW" firstAttribute="top" secondItem="hZ1-gC-DZM" secondAttribute="bottom" constant="52" id="4mQ-Gv-JFe"/>

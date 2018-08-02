@@ -13,9 +13,9 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var IBimgView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        IBimgView.contentMode = .scaleAspectFit
         IBimgView.backgroundColor = UIColor.white
-        IBimgView.image = UIImage(named: "img_Blank")
+        //IBimgView.image = UIImage(named: "img_Blank")
         // Initialization code
     }
 

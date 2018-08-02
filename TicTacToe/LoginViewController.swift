@@ -21,7 +21,7 @@ class LoginViewController: UIViewController{
         let controller = ZeroxCollectionViewController(nibName: "ZeroxCollectionViewController", bundle: nil)
         controller.playerOneName = IBtxtP1Name.text!
         controller.playerTwoName = IBtxtP2BName.text!
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: false)
     }
 }
 extension LoginViewController: UITextFieldDelegate{

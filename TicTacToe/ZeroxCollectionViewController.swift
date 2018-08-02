@@ -27,10 +27,12 @@ class ZeroxCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         self.automaticallyAdjustsScrollViewInsets = false
         IBlblDesision.isHidden = true
-        IBlblPlayerOne.text = playerOneName
-        IBlblPlayerTwo.text = playerTwoName
+//        IBlblPlayerOne.text = playerOneName
+//        IBlblPlayerTwo.text = playerTwoName
+
     }
     private func setUpCollectionView(){
         zeroXCollectionView.allowsMultipleSelection = true
@@ -50,6 +52,7 @@ extension ZeroxCollectionViewController:  UICollectionViewDelegateFlowLayout{
         
     }
 }
+
 extension ZeroxCollectionViewController{
     
     func checkCrossValue(){
@@ -68,7 +71,7 @@ extension ZeroxCollectionViewController{
             if sPosibilitiesList.isSubset(of: sCrossOrZeroLost){
                 for j in i{                                      //if match with posibilities than color it
                     let indexPath = IndexPath(item: j, section: 0)
-                    let cell =  zeroXCollectionView.cellForItem(at: indexPath as IndexPath)
+                    let cell =  zeroXCollectionView.cellForItem(at: indexPath as IndexPath) as? CollectionViewCell
                     cell?.backgroundColor = UIColor.green
                     zeroXCollectionView.deselectItem(at: indexPath, animated: false)
                 }
@@ -102,6 +105,16 @@ extension ZeroxCollectionViewController{
         }
         zeroXCollectionView.allowsSelection = true
      }
+    private func addAnimationToImgView(img: UIImage,imgView: UIImageView){
+        UIView.transition(with: imgView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+          
+            imgView.layer.shadowColor = UIColor.gray.cgColor
+            imgView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+            imgView.layer.shadowOpacity = 3.0
+            imgView.layer.shadowRadius = 1.0
+            imgView.image = img
+        }, completion: nil)
+    }
 }
 extension ZeroxCollectionViewController: UICollectionViewDataSource{
 
@@ -115,21 +128,23 @@ extension ZeroxCollectionViewController: UICollectionViewDataSource{
         }
 }
 extension ZeroxCollectionViewController: UICollectionViewDelegate{
-
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+       
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
             count += 1
             if count % 2 == 0{
-                cell.IBimgView.image = UIImage(named: "img_Zero")
+                addAnimationToImgView(img: #imageLiteral(resourceName: "zero"), imgView: cell.IBimgView)
                 arrZero.append(indexPath.row)
                 checkCrossValue()
             }else{
-                cell.IBimgView.image = UIImage(named: "img_Cross")
+               addAnimationToImgView(img: #imageLiteral(resourceName: "close"), imgView: cell.IBimgView)
                 arrCross.append(indexPath.row)
                 checkCrossValue()
             }
-        }
-        func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            count -= 1
-        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        count -= 1
+    }
 }
