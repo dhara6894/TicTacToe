@@ -14,6 +14,7 @@ class ZeroxCollectionViewController: UIViewController {
     var playerOneName = String()
     var playerTwoName = String()
     var linePosition = [CGPoint]()
+    var cellFrames = [CGRect]()
     var arrCross = [Int]()
     var arrZero =  [Int]()
     let arrPosibileValue = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
@@ -28,68 +29,28 @@ class ZeroxCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    private func setupUI(){
         self.navigationController?.navigationBar.isHidden = true
         self.automaticallyAdjustsScrollViewInsets = false
         IBlblDesision.isHidden = true
-        
-      
-//        IBlblPlayerOne.text = playerOneName
-//        IBlblPlayerTwo.text = playerTwoName
-
+    //  IBlblPlayerOne.text = playerOneName
+    //  IBlblPlayerTwo.text = playerTwoName
     }
     private func setUpCollectionView(){
         zeroXCollectionView.allowsMultipleSelection = true
         zeroXCollectionView.register(UINib(nibName: "CollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "collectionCell")
         zeroXCollectionView.layer.cornerRadius = 15.0
         zeroXCollectionView.clipsToBounds = true
-        addShadow(to: zeroXCollectionView.layer, with: 5.0)
+        //Helper.addShadow(to: zeroXCollectionView.layer, with: 5.0)
         zeroXCollectionView.layer.masksToBounds = false
-    }
-    private func addLine(from startPoint: CGPoint, to endPoint: CGPoint, collView:UIView){
-        // create path
-        let path = UIBezierPath()
-        path.move(to: startPoint)
-        path.addLine(to: endPoint)
-
-        // Create a `CAShapeLayer` that uses that `UIBezierPath`:
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.green.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 12
-        shapeLayer.lineJoin = kCALineJoinBevel
-        addShadow(to: shapeLayer, with: 3.0)
-        
-        // Add that `CAShapeLayer` to your view's layer:
-        UIView.animate(withDuration: 1, animations: {
-            self.view.layer.addSublayer(shapeLayer)
-        })
-        
-        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        pathAnimation.duration = 0.3
-        pathAnimation.fromValue = 0
-        pathAnimation.toValue = 1
-        shapeLayer.add(pathAnimation, forKey: "strokeEnd")
-    }
-}
-extension ZeroxCollectionViewController:  UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let totalSpace = flowLayout.sectionInset.left
-            + flowLayout.sectionInset.right
-            + (flowLayout.minimumInteritemSpacing * CGFloat(2))
-        let size = Int((zeroXCollectionView.bounds.size.width - totalSpace) / CGFloat(3))
-        
-        return CGSize(width: size, height: size)
-        
     }
 }
 
 extension ZeroxCollectionViewController{
     
-    func checkCrossValue(){
+    private func checkCrossValue(){
         for i in arrPosibileValue{
             let sPosibilitiesList = Set(i)                                   //arrayValue
             var sCrossOrZeroLost = Set<Int>()                                //crossValue or zeroValue
@@ -107,10 +68,9 @@ extension ZeroxCollectionViewController{
                 for j in i{                                      //if match with posibilities than color it
                     let indexPath = IndexPath(item: j, section: 0)
                     
-                    guard let cell =  zeroXCollectionView.cellForItem(at: indexPath as IndexPath) as? CollectionViewCell else { return }
+//                    guard let cell =  zeroXCollectionView.cellForItem(at: indexPath as IndexPath) as? CollectionViewCell else { return }
                    getStartEndPoint(from: indexPath)
-                    //cell.backgroundColor = UIColor.green
-                    zeroXCollectionView.deselectItem(at: indexPath, animated: false)
+                   zeroXCollectionView.deselectItem(at: indexPath, animated: false)
                 }
                 IBlblDesision.isHidden = false
                 IBlblDesision.text = message
@@ -124,17 +84,20 @@ extension ZeroxCollectionViewController{
         }
     }
     private func getStartEndPoint(from indexpath: IndexPath){
-        let attributes: UICollectionViewLayoutAttributes? = zeroXCollectionView.layoutAttributesForItem(at: indexpath)
-        let cellRect: CGRect? = attributes?.frame
-        let cellFrameInSuperview = zeroXCollectionView.convert(cellRect ?? CGRect.zero, to: zeroXCollectionView.superview)
-        linePosition.append(CGPoint(x:cellFrameInSuperview.origin.x , y: cellFrameInSuperview.origin.y))
-        let width = cellFrameInSuperview.size.width
+        //get frame of cell
+       let cellFrame = zeroXCollectionView.makeStartEndPoint(on: indexpath)
+        linePosition.append(CGPoint(x:cellFrame.origin.x , y: cellFrame.origin.y))
+        let width = cellFrame.size.width
         if linePosition.count == 3{
-            
-            addLine(from: CGPoint(x: linePosition[0].x + (width / 2) , y: linePosition[0].y + (width / 2)), to: CGPoint(x: linePosition[2].x + (width - (width / 2)), y: linePosition[2].y + (width - (width / 2))), collView: zeroXCollectionView)
+
+            Helper.addLine(from: CGPoint(x: linePosition[0].x + (width / 2) , y: linePosition[0].y + (width / 2)), to: CGPoint(x: linePosition[2].x + (width - (width / 2)), y: linePosition[2].y + (width - (width / 2))), view: self.view, duration: 0.3, strokeColor: .green)
         }
-        
     }
+}
+
+//MARK:- Actions Method
+
+extension ZeroxCollectionViewController{
     @IBAction func btnBackClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -152,20 +115,11 @@ extension ZeroxCollectionViewController{
             //zeroXCollectionView.deselectItem(at: indexPath, animated: false)
         }
         zeroXCollectionView.allowsSelection = true
-     }
-    private func addAnimationToImgView(img: UIImage,imgView: UIImageView){
-        UIView.transition(with: imgView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            self.addShadow(to: imgView.layer, with: 1.0)
-            imgView.image = img
-        }, completion: nil)
-    }
-    private func addShadow(to layer: CALayer, with raious : CGFloat){
-       layer.shadowColor = UIColor.gray.cgColor
-       layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-       layer.shadowOpacity = 3.0
-       layer.shadowRadius = raious
     }
 }
+
+//MARK:- UICollectionViewDataSource Method
+
 extension ZeroxCollectionViewController: UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -177,25 +131,67 @@ extension ZeroxCollectionViewController: UICollectionViewDataSource{
             return cell
         }
 }
+
+//MARK:- UICollectionViewDelegate Method
+
 extension ZeroxCollectionViewController: UICollectionViewDelegate{
+//    func getFrame(of row:Int) -> CGFloat {
+//       // let frame = cellFrames.filter{ $0 == row }
+//    }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-       
+        //get frame of cell
+        
+        let cellFrame = zeroXCollectionView.makeStartEndPoint(on: indexPath)
+//        cellFrames.append(CGPoint(x:cellFrame.origin.x , y: cellFrame.origin.y))
+        cellFrames.append(cellFrame)
+        if indexPath.row == 8{
+            UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut, animations: {
+                Helper.addLine(from: CGPoint(x: (self.cellFrames[0].origin.x + self.cellFrames[0].size.width) + 5, y: self.cellFrames[0].origin.y), to: CGPoint(x:(self.cellFrames[6].origin.x + self.cellFrames[6].size.width) + 5, y: (self.cellFrames[6].origin.y + self.cellFrames[6].size.height)), view: self.view, duration: 1, strokeColor: .blue)
+            })
+            UIView.animate(withDuration: 2, delay: 4, options: .curveEaseInOut, animations: {
+                Helper.addLine(from: CGPoint(x: self.cellFrames[0].origin.x , y: (self.cellFrames[0].origin.y + self.cellFrames[0].size.height) + 5), to: CGPoint(x:(self.cellFrames[2].origin.x + self.cellFrames[2].size.width), y: (self.cellFrames[2].origin.y + self.cellFrames[2].size.height) + 5), view: self.view, duration: 1, strokeColor: .blue)
+            })
+             UIView.animate(withDuration: 2, delay: 2, options: .curveEaseInOut, animations: {
+                Helper.addLine(from: CGPoint(x: (self.cellFrames[1].origin.x + self.cellFrames[1].size.width) + 5, y: self.cellFrames[1].origin.y), to: CGPoint(x:(self.cellFrames[7].origin.x + self.cellFrames[7].size.width) + 5, y: (self.cellFrames[7].origin.y + self.cellFrames[7].size.height)), view: self.view, duration: 1, strokeColor: .blue)
+                
+            })
+           
+             UIView.animate(withDuration: 2, delay: 6, options: .curveEaseInOut, animations: {
+                Helper.addLine(from: CGPoint(x: self.cellFrames[3].origin.x , y: (self.cellFrames[3].origin.y + self.cellFrames[3].size.height) + 5), to: CGPoint(x:(self.cellFrames[5].origin.x + self.cellFrames[5].size.width), y: (self.cellFrames[5].origin.y + self.cellFrames[5].size.height) + 5), view: self.view, duration: 1, strokeColor: .blue)
+                })
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
             count += 1
             if count % 2 == 0{
-                addAnimationToImgView(img: #imageLiteral(resourceName: "zero"), imgView: cell.IBimgView)
+               Helper.addAnimationToImgView(img: #imageLiteral(resourceName: "hate"), imgView: cell.IBimgView)
                 arrZero.append(indexPath.row)
                 checkCrossValue()
             }else{
-               addAnimationToImgView(img: #imageLiteral(resourceName: "close"), imgView: cell.IBimgView)
+              Helper.addAnimationToImgView(img: #imageLiteral(resourceName: "love"), imgView: cell.IBimgView)
                 arrCross.append(indexPath.row)
                 checkCrossValue()
             }
-
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         count -= 1
     }
 }
+
+//MARK:- UICollectionViewDelegateFlowLayout Method
+
+extension ZeroxCollectionViewController:  UICollectionViewDelegateFlowLayout{
+   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumInteritemSpacing * CGFloat(2))
+        let size = Int((zeroXCollectionView.bounds.size.width - totalSpace) / CGFloat(3))
+        return CGSize(width: size, height: size)
+        
+    }
+}
+

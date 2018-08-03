@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,16 +22,18 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DC2-Hy-wLt">
                         <rect key="frame" x="8" y="8" width="34" height="34"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="DC2-Hy-wLt" secondAttribute="height" multiplier="1:1" id="LlR-KR-CJ0"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="DC2-Hy-wLt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Agf-Td-aDb"/>
-                <constraint firstAttribute="bottom" secondItem="DC2-Hy-wLt" secondAttribute="bottom" constant="8" id="BpV-80-Bo2"/>
-                <constraint firstAttribute="trailing" secondItem="DC2-Hy-wLt" secondAttribute="trailing" constant="8" id="C4N-Va-cC1"/>
-                <constraint firstItem="DC2-Hy-wLt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Qrk-MN-Su4"/>
+                <constraint firstItem="DC2-Hy-wLt" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="34:50" id="HqK-XL-Z7S"/>
+                <constraint firstItem="DC2-Hy-wLt" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="gAj-z3-QWA"/>
+                <constraint firstItem="DC2-Hy-wLt" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="vBU-Wt-Gai"/>
             </constraints>
             <connections>
                 <outlet property="IBimgView" destination="DC2-Hy-wLt" id="Rn4-g8-2AR"/>
