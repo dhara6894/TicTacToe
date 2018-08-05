@@ -17,8 +17,12 @@
 		2918D16D1E6D435B00318EAC /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */; };
 		29A4485D1E6E9AC9003D463F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4485B1E6E9AC9003D463F /* LoginViewController.swift */; };
 		29A4485E1E6E9AC9003D463F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A4485C1E6E9AC9003D463F /* LoginViewController.xib */; };
+		8843AD742115FE40002AFD8A /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8843AD732115FE40002AFD8A /* win.mp3 */; };
 		885396F72114AE9500D46B54 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885396F62114AE9500D46B54 /* Helper.swift */; };
-		8880988821136D0F00E58392 /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880988721136D0F00E58392 /* BezierPath.swift */; };
+		8866E84D21170D7500EFBE4E /* ChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8866E84C21170D7500EFBE4E /* ChooseView.xib */; };
+		8866E84F2117390500EFBE4E /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8866E84E2117390500EFBE4E /* ChooseView.swift */; };
+		8866E8512117660600EFBE4E /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8866E8502117660600EFBE4E /* tick.mp3 */; };
+		8880988821136D0F00E58392 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880988721136D0F00E58392 /* CollectionView.swift */; };
 		88F81C5E210E32A200FDA82D /* AllinOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F81C5D210E32A200FDA82D /* AllinOne.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +39,12 @@
 		2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		29A4485B1E6E9AC9003D463F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		29A4485C1E6E9AC9003D463F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		8843AD732115FE40002AFD8A /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		885396F62114AE9500D46B54 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		8880988721136D0F00E58392 /* BezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPath.swift; sourceTree = "<group>"; };
+		8866E84C21170D7500EFBE4E /* ChooseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseView.xib; sourceTree = "<group>"; };
+		8866E84E2117390500EFBE4E /* ChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
+		8866E8502117660600EFBE4E /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
+		8880988721136D0F00E58392 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		88F81C5D210E32A200FDA82D /* AllinOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllinOne.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,22 +78,82 @@
 		2918D14B1E6D2E4A00318EAC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				8843AD7B2115FF8B002AFD8A /* Utils */,
+				8843AD7A2115FF69002AFD8A /* Supporting Files */,
+				8843AD782115FF00002AFD8A /* Controllers */,
+				8843AD772115FEE5002AFD8A /* Custom Views */,
+				8843AD762115FEC0002AFD8A /* Storyboard */,
+				8843AD752115FEA1002AFD8A /* Views */,
 				2918D14C1E6D2E4A00318EAC /* AppDelegate.swift */,
-				2918D1501E6D2E4A00318EAC /* Main.storyboard */,
-				88F81C5D210E32A200FDA82D /* AllinOne.swift */,
-				2918D1661E6D431200318EAC /* ZeroxCollectionViewController.swift */,
-				2918D1671E6D431200318EAC /* ZeroxCollectionViewController.xib */,
-				29A4485B1E6E9AC9003D463F /* LoginViewController.swift */,
-				29A4485C1E6E9AC9003D463F /* LoginViewController.xib */,
-				2918D16A1E6D435B00318EAC /* CollectionViewCell.swift */,
-				2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */,
-				2918D1531E6D2E4A00318EAC /* Assets.xcassets */,
-				2918D1551E6D2E4A00318EAC /* LaunchScreen.storyboard */,
+				8843AD732115FE40002AFD8A /* win.mp3 */,
+				8866E8502117660600EFBE4E /* tick.mp3 */,
 				2918D1581E6D2E4A00318EAC /* Info.plist */,
-				8880988721136D0F00E58392 /* BezierPath.swift */,
-				885396F62114AE9500D46B54 /* Helper.swift */,
 			);
 			path = TicTacToe;
+			sourceTree = "<group>";
+		};
+		8843AD752115FEA1002AFD8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				29A4485C1E6E9AC9003D463F /* LoginViewController.xib */,
+				2918D1671E6D431200318EAC /* ZeroxCollectionViewController.xib */,
+				2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */,
+				8866E84C21170D7500EFBE4E /* ChooseView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8843AD762115FEC0002AFD8A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2918D1501E6D2E4A00318EAC /* Main.storyboard */,
+				2918D1551E6D2E4A00318EAC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		8843AD772115FEE5002AFD8A /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				2918D16A1E6D435B00318EAC /* CollectionViewCell.swift */,
+				88F81C5D210E32A200FDA82D /* AllinOne.swift */,
+				8866E84E2117390500EFBE4E /* ChooseView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		8843AD782115FF00002AFD8A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2918D1661E6D431200318EAC /* ZeroxCollectionViewController.swift */,
+				29A4485B1E6E9AC9003D463F /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8843AD792115FF4A002AFD8A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8880988721136D0F00E58392 /* CollectionView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8843AD7A2115FF69002AFD8A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2918D1531E6D2E4A00318EAC /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8843AD7B2115FF8B002AFD8A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				885396F62114AE9500D46B54 /* Helper.swift */,
+				8843AD792115FF4A002AFD8A /* Extensions */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +217,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8843AD742115FE40002AFD8A /* win.mp3 in Resources */,
+				8866E8512117660600EFBE4E /* tick.mp3 in Resources */,
 				29A4485E1E6E9AC9003D463F /* LoginViewController.xib in Resources */,
 				2918D1571E6D2E4A00318EAC /* LaunchScreen.storyboard in Resources */,
+				8866E84D21170D7500EFBE4E /* ChooseView.xib in Resources */,
 				2918D16D1E6D435B00318EAC /* CollectionViewCell.xib in Resources */,
 				2918D1691E6D431200318EAC /* ZeroxCollectionViewController.xib in Resources */,
 				2918D1541E6D2E4A00318EAC /* Assets.xcassets in Resources */,
@@ -167,11 +238,12 @@
 			files = (
 				29A4485D1E6E9AC9003D463F /* LoginViewController.swift in Sources */,
 				885396F72114AE9500D46B54 /* Helper.swift in Sources */,
-				8880988821136D0F00E58392 /* BezierPath.swift in Sources */,
+				8880988821136D0F00E58392 /* CollectionView.swift in Sources */,
 				2918D16C1E6D435B00318EAC /* CollectionViewCell.swift in Sources */,
 				88F81C5E210E32A200FDA82D /* AllinOne.swift in Sources */,
 				2918D1681E6D431200318EAC /* ZeroxCollectionViewController.swift in Sources */,
 				2918D14D1E6D2E4A00318EAC /* AppDelegate.swift in Sources */,
+				8866E84F2117390500EFBE4E /* ChooseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

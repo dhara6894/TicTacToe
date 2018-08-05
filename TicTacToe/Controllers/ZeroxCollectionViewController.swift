@@ -17,6 +17,7 @@ class ZeroxCollectionViewController: UIViewController {
     var cellFrames = [CGRect]()
     var arrCross = [Int]()
     var arrZero =  [Int]()
+    var selectedValue = [Int]()
     let arrPosibileValue = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     @IBOutlet weak var zeroXCollectionView: UICollectionView!{
         didSet{
@@ -55,7 +56,7 @@ extension ZeroxCollectionViewController{
             let sPosibilitiesList = Set(i)                                   //arrayValue
             var sCrossOrZeroLost = Set<Int>()                                //crossValue or zeroValue
             var message = String()
-            if count % 2 == 0{                                       //check for cross or zero
+            if count % 2 == 0{                                     //check for cross or zero
                 sCrossOrZeroLost = Set(arrZero)
                 message = "Unfortunately \(playerTwoName) Won.. Well played \(playerOneName)"
             }else{
@@ -65,16 +66,15 @@ extension ZeroxCollectionViewController{
             
             //check arrayValue elements contain in cross array or zero array
             if sPosibilitiesList.isSubset(of: sCrossOrZeroLost){
-                for j in i{                                      //if match with posibilities than color it
-                    let indexPath = IndexPath(item: j, section: 0)
-                    
-//                    guard let cell =  zeroXCollectionView.cellForItem(at: indexPath as IndexPath) as? CollectionViewCell else { return }
+                for j in i{             //if match with posibilities than color it
+                let indexPath = IndexPath(item: j, section: 0)
                    getStartEndPoint(from: indexPath)
                    zeroXCollectionView.deselectItem(at: indexPath, animated: false)
                 }
                 IBlblDesision.isHidden = false
                 IBlblDesision.text = message
                 zeroXCollectionView.allowsSelection = false
+                break
             }else{
                 if count == 9{
                     IBlblDesision.isHidden = false
@@ -90,7 +90,7 @@ extension ZeroxCollectionViewController{
         let width = cellFrame.size.width
         if linePosition.count == 3{
 
-            Helper.addLine(from: CGPoint(x: linePosition[0].x + (width / 2) , y: linePosition[0].y + (width / 2)), to: CGPoint(x: linePosition[2].x + (width - (width / 2)), y: linePosition[2].y + (width - (width / 2))), view: self.view, duration: 0.3, strokeColor: .green)
+            Helper.addLine(from: CGPoint(x: linePosition[0].x + (width / 2) , y: linePosition[0].y + (width / 2)), to: CGPoint(x: linePosition[2].x + (width - (width / 2)), y: linePosition[2].y + (width - (width / 2))), view: self.view, duration: 0.4, strokeColor: .green, width: 5, delay: 0.3)
         }
     }
 }
@@ -135,47 +135,48 @@ extension ZeroxCollectionViewController: UICollectionViewDataSource{
 //MARK:- UICollectionViewDelegate Method
 
 extension ZeroxCollectionViewController: UICollectionViewDelegate{
-//    func getFrame(of row:Int) -> CGFloat {
-//       // let frame = cellFrames.filter{ $0 == row }
-//    }
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //get frame of cell
         
         let cellFrame = zeroXCollectionView.makeStartEndPoint(on: indexPath)
-//        cellFrames.append(CGPoint(x:cellFrame.origin.x , y: cellFrame.origin.y))
         cellFrames.append(cellFrame)
+        
         if indexPath.row == 8{
-            UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut, animations: {
-                Helper.addLine(from: CGPoint(x: (self.cellFrames[0].origin.x + self.cellFrames[0].size.width) + 5, y: self.cellFrames[0].origin.y), to: CGPoint(x:(self.cellFrames[6].origin.x + self.cellFrames[6].size.width) + 5, y: (self.cellFrames[6].origin.y + self.cellFrames[6].size.height)), view: self.view, duration: 1, strokeColor: .blue)
-            })
-            UIView.animate(withDuration: 2, delay: 4, options: .curveEaseInOut, animations: {
-                Helper.addLine(from: CGPoint(x: self.cellFrames[0].origin.x , y: (self.cellFrames[0].origin.y + self.cellFrames[0].size.height) + 5), to: CGPoint(x:(self.cellFrames[2].origin.x + self.cellFrames[2].size.width), y: (self.cellFrames[2].origin.y + self.cellFrames[2].size.height) + 5), view: self.view, duration: 1, strokeColor: .blue)
-            })
-             UIView.animate(withDuration: 2, delay: 2, options: .curveEaseInOut, animations: {
-                Helper.addLine(from: CGPoint(x: (self.cellFrames[1].origin.x + self.cellFrames[1].size.width) + 5, y: self.cellFrames[1].origin.y), to: CGPoint(x:(self.cellFrames[7].origin.x + self.cellFrames[7].size.width) + 5, y: (self.cellFrames[7].origin.y + self.cellFrames[7].size.height)), view: self.view, duration: 1, strokeColor: .blue)
-                
-            })
-           
-             UIView.animate(withDuration: 2, delay: 6, options: .curveEaseInOut, animations: {
-                Helper.addLine(from: CGPoint(x: self.cellFrames[3].origin.x , y: (self.cellFrames[3].origin.y + self.cellFrames[3].size.height) + 5), to: CGPoint(x:(self.cellFrames[5].origin.x + self.cellFrames[5].size.width), y: (self.cellFrames[5].origin.y + self.cellFrames[5].size.height) + 5), view: self.view, duration: 1, strokeColor: .blue)
-                })
+            Helper.addLine(from: CGPoint(x: (self.cellFrames[0].origin.x + self.cellFrames[0].size.width) + 5, y: self.cellFrames[0].origin.y), to: CGPoint(x:(self.cellFrames[6].origin.x + self.cellFrames[6].size.width) + 5, y: (self.cellFrames[6].origin.y + self.cellFrames[6].size.height)), view: self.view, duration: 0.4, strokeColor: .blue, delay: 0.1)
+
+            Helper.addLine(from: CGPoint(x: (self.cellFrames[1].origin.x + self.cellFrames[1].size.width) + 5, y: self.cellFrames[1].origin.y), to: CGPoint(x:(self.cellFrames[7].origin.x + self.cellFrames[7].size.width) + 5, y: (self.cellFrames[7].origin.y + self.cellFrames[7].size.height)), view: self.view, duration: 0.4, strokeColor: .blue, delay: 0.6)
+
+            Helper.addLine(from: CGPoint(x: self.cellFrames[0].origin.x , y: (self.cellFrames[0].origin.y + self.cellFrames[0].size.height) + 5), to: CGPoint(x:(self.cellFrames[2].origin.x + self.cellFrames[2].size.width), y: (self.cellFrames[2].origin.y + self.cellFrames[2].size.height) + 5), view: self.view, duration: 0.4, strokeColor: .blue, delay: 1.0)
+
+            Helper.addLine(from: CGPoint(x: self.cellFrames[3].origin.x , y: (self.cellFrames[3].origin.y + self.cellFrames[3].size.height) + 5), to: CGPoint(x:(self.cellFrames[5].origin.x + self.cellFrames[5].size.width), y: (self.cellFrames[5].origin.y + self.cellFrames[5].size.height) + 5), view: self.view, duration: 0.4, strokeColor: .blue, delay: 1.5)
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
-            count += 1
+        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        if cell.IBimgView.image != nil{
+            return
+        }
+        count += 1
             if count % 2 == 0{
-               Helper.addAnimationToImgView(img: #imageLiteral(resourceName: "hate"), imgView: cell.IBimgView)
+                cell.IBimgView.image = #imageLiteral(resourceName: "hate")
+                Helper.likeAnimation(imgView: cell.IBimgView)
                 arrZero.append(indexPath.row)
                 checkCrossValue()
             }else{
-              Helper.addAnimationToImgView(img: #imageLiteral(resourceName: "love"), imgView: cell.IBimgView)
+                cell.IBimgView.image = #imageLiteral(resourceName: "love")
+                Helper.likeAnimation(imgView: cell.IBimgView)
                 arrCross.append(indexPath.row)
                 checkCrossValue()
             }
+            selectedValue.append(indexPath.row)
+        
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        count -= 1
+         let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        if cell.IBimgView.image == nil{
+//            count -= 1
+        }
     }
 }
 
