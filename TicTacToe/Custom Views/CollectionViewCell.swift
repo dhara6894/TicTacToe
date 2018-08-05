@@ -15,8 +15,13 @@ class CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         IBimgView.contentMode = .scaleAspectFit
         IBimgView.backgroundColor = UIColor.white
-        //IBimgView.image = UIImage(named: "img_Blank")
-        // Initialization code
     }
-
+    func configureCell(_ isEven: Bool){
+        if isEven{
+            IBimgView.image = #imageLiteral(resourceName: "hate")
+        }else{
+            IBimgView.image = #imageLiteral(resourceName: "love")
+        }
+        Helper.likeAnimation(imgView: IBimgView)
+    }
 }
