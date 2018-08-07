@@ -17,6 +17,7 @@
 		2918D16D1E6D435B00318EAC /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */; };
 		29A4485D1E6E9AC9003D463F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4485B1E6E9AC9003D463F /* LoginViewController.swift */; };
 		29A4485E1E6E9AC9003D463F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A4485C1E6E9AC9003D463F /* LoginViewController.xib */; };
+		8823181C211A07B9005B0510 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8823181B211A07B9005B0510 /* background.mp3 */; };
 		8843AD742115FE40002AFD8A /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8843AD732115FE40002AFD8A /* win.mp3 */; };
 		885396F72114AE9500D46B54 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885396F62114AE9500D46B54 /* Helper.swift */; };
 		8866E84D21170D7500EFBE4E /* ChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8866E84C21170D7500EFBE4E /* ChooseView.xib */; };
@@ -39,6 +40,7 @@
 		2918D16B1E6D435B00318EAC /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		29A4485B1E6E9AC9003D463F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		29A4485C1E6E9AC9003D463F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		8823181B211A07B9005B0510 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		8843AD732115FE40002AFD8A /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		885396F62114AE9500D46B54 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8866E84C21170D7500EFBE4E /* ChooseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseView.xib; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				8843AD752115FEA1002AFD8A /* Views */,
 				2918D14C1E6D2E4A00318EAC /* AppDelegate.swift */,
 				8843AD732115FE40002AFD8A /* win.mp3 */,
+				8823181B211A07B9005B0510 /* background.mp3 */,
 				8866E8502117660600EFBE4E /* tick.mp3 */,
 				2918D1581E6D2E4A00318EAC /* Info.plist */,
 			);
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8843AD742115FE40002AFD8A /* win.mp3 in Resources */,
+				8823181C211A07B9005B0510 /* background.mp3 in Resources */,
 				8866E8512117660600EFBE4E /* tick.mp3 in Resources */,
 				29A4485E1E6E9AC9003D463F /* LoginViewController.xib in Resources */,
 				2918D1571E6D2E4A00318EAC /* LaunchScreen.storyboard in Resources */,

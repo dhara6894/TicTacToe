@@ -12,13 +12,13 @@ import  AVFoundation
 class ZeroxCollectionViewController: UIViewController {
 
     var count = 0
-    var playerOneName = String()
-    var playerTwoName = String()
     var linePosition = [CGPoint]()
     var cellFrames = [CGRect]()
     var arrCross = [Int]()
     var arrZero =  [Int]()
     var audioPlayer = AVAudioPlayer()
+    var audioPlayer1 = AVAudioPlayer()
+    var backgroundPlayer = AVAudioPlayer()
     let arrPosibileValue = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
     @IBOutlet weak var whoseTurnImage: UIImageView!
@@ -41,8 +41,7 @@ class ZeroxCollectionViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         IBlblDesision.isHidden = true
         getWhoseturn(is: true)
-    //  IBlblPlayerOne.text = playerOneName
-    //  IBlblPlayerTwo.text = playerTwoName
+        playBackfroundMusic(str: "background.mp3")
     }
     
     private func setUpCollectionView(){
@@ -58,7 +57,35 @@ class ZeroxCollectionViewController: UIViewController {
         let url = URL(fileURLWithPath: path)
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer.prepareToPlay()
             audioPlayer.play()
+        } catch let error{
+            print(error)
+            // couldn't load file :(
+        }
+    }
+    private func playCompleteGameAudio(str: String){
+        
+        let path = Bundle.main.path(forResource: str, ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            audioPlayer1 = try AVAudioPlayer(contentsOf: url)
+            audioPlayer1.prepareToPlay()
+            audioPlayer1.play()
+        } catch let error{
+            print(error)
+            // couldn't load file :(
+        }
+    }
+    private func playBackfroundMusic(str: String){
+        
+        let path = Bundle.main.path(forResource: str, ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            backgroundPlayer = try AVAudioPlayer(contentsOf: url)
+            backgroundPlayer.numberOfLoops = -1
+            backgroundPlayer.prepareToPlay()
+            backgroundPlayer.play()
         } catch let error{
             print(error)
             // couldn't load file :(
@@ -132,7 +159,7 @@ extension ZeroxCollectionViewController{
         if linePosition.count == 3{
         
             Helper.addLine(from: CGPoint(x: linePosition[0].x + (width / 2) , y: linePosition[0].y + (width / 2)), to: CGPoint(x: linePosition[2].x + (width - (width / 2)), y: linePosition[2].y + (width - (width / 2))), view: self.view, duration: 0.4, strokeColor: .green, width: 5, delay: 0.3)
-            playAudio(str: "win.mp3")
+            playCompleteGameAudio(str: "win.mp3")
         }
     }
     
@@ -232,7 +259,7 @@ extension ZeroxCollectionViewController: UICollectionViewDelegate{
                 arrCross.append(indexPath.row)
                 checkCrossValue()
             }
-      //  playAudio(str: "tick.mp3")
+        playAudio(str: "tick.mp3")
     }
 }
 
